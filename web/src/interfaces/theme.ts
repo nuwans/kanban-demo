@@ -51,4 +51,5 @@ export interface Theame {
 
   },
   dropDownBg:string,
+  newColumnGradient:string;
 }

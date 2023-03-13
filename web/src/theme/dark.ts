@@ -11,7 +11,7 @@ import {
 import { Theame } from "../interfaces/theme";
 
 export const darkTheme: Theame = {
-  background: "#2B2C37",
+  background:colors.darkGray,
   primaryContent: colors.white,
   secondaryColor: "black",
   breackPoints: themeConfigs.breakpoints,
@@ -53,6 +53,7 @@ export const darkTheme: Theame = {
     subHeading: colors.mediumGray,
     color: colors.white,
   },
-  dropDownBg:colors.veryDarkGray
+  dropDownBg:colors.veryDarkGray,
+  newColumnGradient:'linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%)'
   
 };

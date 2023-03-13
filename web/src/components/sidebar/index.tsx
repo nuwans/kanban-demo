@@ -45,7 +45,6 @@ const SideBar = ({ show, setVisible,boards,addNew ,selectItem,selectedItem}: Pro
           onChange={changeThemeName}
         ></SwitchContainer>
       )}
-
       <SideBarToggle onClick={setVisible}></SideBarToggle>
     </Wrapper>
   );
