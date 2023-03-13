@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import {
-  DropdownContainer,
-  DropdownHeader,
-  DropdownItem,
-  DropdownList,
   OptionDropDownContainer,
   OptionDropdownHeader,
   OptionDropdownItem,
   OptionDropdownList,
 } from "./styledComponent";
-import { iColumn } from "../../interfaces/column";
-import { Id } from "@reduxjs/toolkit/dist/tsHelpers";
 import Image from "../../config/images";
 import { iTask } from "../../interfaces/tasks";
 interface Props {

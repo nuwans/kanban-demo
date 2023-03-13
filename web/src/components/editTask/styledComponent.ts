@@ -57,38 +57,6 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Select = styled.select`
-  color: ${(props) => props.theme.modalInput};
-  background: ${(props) => props.theme.modalInputBg};
-  font-family: ${(props) => props.theme.typograpy.headingL.fontFamily};
-  padding: 7px 16px 8px 16px;
-  height: 40px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(130, 143, 163, 0.25);
-  line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
-  border-radius: 4px;
-  font-size: ${(props) => props.theme.typograpy.bodyM.fontSize};
-  &:focus,
-  &:active {
-    outline: none;
-    border-color: rgba(130, 143, 163, 0.25);
-  }
-  ::placeholder {
-    opacity: 25%;
-  }
-`;
-export const SelectOption = styled.option`
-  //color: ${(props) => props.theme.modalInput};
-
-  &:focus,
-  &:active {
-    outline: none;
-    //border-color: rgba(130, 143, 163, 0.25);
-  }
-  ::placeholder {
-    opacity: 25%;
-  }
-`;
 
 export const ColumnWrapper = styled.div`
   display: flex;

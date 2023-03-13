@@ -2,7 +2,6 @@ import SideBar from "../sidebar";
 import Image from "../../config/images";
 import {
   Content,
-  ContentHeader,
   ContentWrapper,
   Header,
   HeaderLeft,
@@ -19,7 +18,6 @@ import { useBoards } from "../../hooks/useBoards";
 import { BoardState } from "../../store/board";
 import { useSelector } from "react-redux";
 import AddBoardModal from "../addNewBoard";
-import { iColumn } from "../../interfaces/column";
 import { iBoard, iCreateBoard } from "../../interfaces/board";
 import Board from "../board";
 import EditBoardModal from "../editBoard";
@@ -128,14 +126,14 @@ const Layout = ({ children }: Props) => {
                 onClose={() => setShowAddBoard(false)}
               />
             )}
-            {board.id != 0 && (
+            {board.id !== 0 && (
               <Board
                 openTask={openTaskView}
                 addColumn={addColumn}
                 board={board}
               />
             )}
-            {board.id != 0 && editBoardVisible && (
+            {board.id !== 0 && editBoardVisible && (
               <EditBoardModal
                 onClose={() => setEditBoardVisible(false)}
                 isOpen={editBoardVisible}
@@ -143,7 +141,7 @@ const Layout = ({ children }: Props) => {
                 editBoard={editBoardCallBack}
               />
             )}
-            {board.id != 0 && showAddTask && board.columns.length > 0 && (
+            {board.id !== 0 && showAddTask && board.columns.length > 0 && (
               <AddTaskModal
                 addTask={createTask}
                 onClose={() => setAddTaskVisibility(false)}
@@ -151,7 +149,7 @@ const Layout = ({ children }: Props) => {
                 board={board}
               />
             )}
-            {board.id != 0 &&
+            {board.id !== 0 &&
               showEditTask &&
               board.columns.length > 0 &&
               task && (
@@ -163,7 +161,7 @@ const Layout = ({ children }: Props) => {
                   board={board}
                 />
               )}
-            {board.id != 0 &&
+            {board.id !== 0 &&
               viewTaskVisible &&
               board.columns.length > 0 &&
               task && (

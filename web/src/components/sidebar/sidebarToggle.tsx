@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "../../config/images";
 import { ToggleContent, ToggleWrapper } from "./styledComponents";
 

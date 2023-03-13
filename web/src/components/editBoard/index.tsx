@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "../../config/images";
 import Modal from "../model";
 import {
   ColoumnButton,
@@ -11,7 +10,7 @@ import {
 } from "./styledComponent";
 import { iColumn } from "../../interfaces/column";
 import ColumnElement from "./column";
-import { iBoard, iCreateBoard } from "../../interfaces/board";
+import { iBoard } from "../../interfaces/board";
 interface Props {
   onClose: () => void;
   isOpen: boolean;
@@ -32,7 +31,7 @@ const EditBoardModal = ({ onClose, isOpen,board, editBoard }: Props) => {
       const newArray = [...prevArray];
       for (let i = 0; i < newArray.length; i++) {
         if (newArray[i].id === id) {
-          const {id,name:oldName,boardId}=newArray[i]
+          const {id,boardId}=newArray[i]
           newArray[i]={
             id,
             name:name,
@@ -45,7 +44,7 @@ const EditBoardModal = ({ onClose, isOpen,board, editBoard }: Props) => {
     }); 
   };
   const removeColumn = (id: number) => {
-    setColumns(newColumns.filter((c) => c.id != id));
+    setColumns(newColumns.filter((c) => c.id !== id));
   };
   const saveBoard = () => {
     editBoard({ name:newName,id, columns: newColumns });

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "../../config/images";
 import Modal from "../model";
 import {
   ColoumnButton,
@@ -11,7 +10,7 @@ import {
 } from "./styledComponent";
 import { iColumn } from "../../interfaces/column";
 import ColumnElement from "./column";
-import { iBoard, iCreateBoard } from "../../interfaces/board";
+import {  iCreateBoard } from "../../interfaces/board";
 interface Props {
   onClose: () => void;
   isOpen: boolean;
@@ -38,7 +37,7 @@ const AddBoardModal = ({ onClose, isOpen, addBoard }: Props) => {
     });
   };
   const removeColumn = (id: number) => {
-    setColumns(columns.filter((c) => c.id != id));
+    setColumns(columns.filter((c) => c.id !== id));
   };
   const saveBoard = () => {
     const newArr = columns.map((obj) => {

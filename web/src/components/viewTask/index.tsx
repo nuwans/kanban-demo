@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Image from "../../config/images";
 import Modal from "../model";
 import { ButtonCorner, Description, Header, Label } from "./styledComponent";
 import { iBoard } from "../../interfaces/board";
@@ -27,11 +25,8 @@ const ViewTaskModal = ({
   deleteTask,
 }: Props) => {
   const { editTaskStatus, editTaskColumn } = useBoards();
-  const [description, setDescription] = useState<string>(
-    task.description ? task.description : ""
-  );
-  const { subTasks = [] } = task;
-  const [columnId, setColumn] = useState<number>(task.columnId);
+  const { subTasks = [],columnId } = task;
+  //const [columnId] = useState<number>(task.columnId);
   const changeSubTask = (o: Partial<iTask>) => {
     editTaskStatus(o);
   };
@@ -44,7 +39,6 @@ const ViewTaskModal = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <Header>
         {task.title}
-        {task.id}
         <ButtonCorner>
           <OptionDropdown
             task={task}
@@ -53,7 +47,7 @@ const ViewTaskModal = ({
           ></OptionDropdown>
         </ButtonCorner>
       </Header>
-      <Description>{description}</Description>
+      <Description>{task?.description}</Description>
       <Label>Subtasks</Label>
       {subTasks.map((st: iCreateTask) => {
         return (

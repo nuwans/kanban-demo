@@ -8,7 +8,7 @@ interface Props {
 }
 
 const HeaderComp = ({board,setAddTaskModalVisible}:Props) => {
-  const {id,columns,name}=board
+  const {columns,name}=board
   return <HeaderRight>
     <BoardName>{name} </BoardName>
     <ButtonCorner>

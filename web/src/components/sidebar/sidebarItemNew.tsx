@@ -1,11 +1,9 @@
-import { useState } from "react";
+
 import Image from "../../config/images";
 import {
   AddNewContent,
   IconWrapper,
-  ItemWrapper,
   ItemWrapperNew,
-  Name,
 } from "./styledComponents";
 
 interface Props {
