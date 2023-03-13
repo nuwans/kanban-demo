@@ -1,20 +1,14 @@
-import { useState } from "react";
-import Image from "../../config/images";
-import Modal from "../model";
 import {
   CheckboxCheckmark,
   CheckboxInput,
   CheckboxLabel,
   ColumnWrapper,
   CustomCheckbox,
-  //Input,
- // InputWrapper,
- // RemoveIcon,
   TaskName,
   TaskWrapper,
 } from "./styledComponent";
-import { iColumn } from "../../interfaces/column";
-import { iCreateTask, iTask } from "../../interfaces/tasks";
+
+import {  iTask } from "../../interfaces/tasks";
 interface Props {
   id: number;
   title: string;

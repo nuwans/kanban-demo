@@ -1,6 +1,4 @@
-import { useState } from "react";
 import Image from "../../config/images";
-import Modal from "../model";
 import {
   ColumnWrapper,
   Input,
@@ -16,8 +14,8 @@ interface Props {
 }
 
 const ColumnElement = ({ id, onChange, onRemove, name }: Props) => {
-  const onChangeVal = (val:string) => {
-    onChange({id,name:val})
+  const onChangeVal = (val: string) => {
+    onChange({ id, name: val });
   };
   return (
     <ColumnWrapper>

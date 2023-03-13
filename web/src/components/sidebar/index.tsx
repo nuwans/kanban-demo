@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import Image from "../../config/images";
+
 import { BoardHeader, BoardWrapper, Wrapper } from "./styledComponents";
-import { demoBords } from "./demo";
 import SideBarItem from "./sidebarItem";
 import SwitchContainer from "./switchContainer";
 import SideBarToggle from "./sidebarToggle";
@@ -47,7 +45,6 @@ const SideBar = ({ show, setVisible,boards,addNew ,selectItem,selectedItem}: Pro
           onChange={changeThemeName}
         ></SwitchContainer>
       )}
-
       <SideBarToggle onClick={setVisible}></SideBarToggle>
     </Wrapper>
   );

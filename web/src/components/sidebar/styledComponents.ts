@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div<{show:boolean}>`
-  //width: 300px;
   padding-top: 32px;
   width: ${(props) => (props.show ?'300px': '0px')};
-  display:${(props) => (props.show ?'flex': 'none')}
-  flex-direction: column;
+  display: ${({ show }) => show ? 'flex' : 'none'};
+  flex-direction:column;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     //width: 260px;
     width: ${(props) => (props.show ?'260px': '0px')};
@@ -31,8 +30,7 @@ export const BoardHeader = styled.div`
 export const ItemWrapper = styled.div<{selected:boolean}>`
   display: flex;
   color: ${(props) => (props.selected ?props.theme.colors.white: props.theme.colors.mediumGray)};
- // background: ${(props) => (props.selected ?props.theme.colors.mainPurpole: props.theme.colors.white)};
- // color:  ${(props) => props.theme.colors.mediumGray};
+  background: ${(props) => (props.selected ?props.theme.colors.mainPurpole: props.theme.background)};
   border-radius: 0 100px 100px 0;
   height: 48px;
   align-items: center;

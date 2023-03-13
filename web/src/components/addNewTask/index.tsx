@@ -10,7 +10,7 @@ import {
   TextArea,
 } from "./styledComponent";
 import {  iBoard } from "../../interfaces/board";
-import { iCreateTask, iTask } from "../../interfaces/tasks";
+import { iCreateTask } from "../../interfaces/tasks";
 import SubTaskElement from "./subtask";
 import CustomDropdown from "./dropDown";
 interface Props {
@@ -52,7 +52,7 @@ const AddTaskModal = ({ onClose, isOpen, addTask, board }: Props) => {
     });
   };
   const removeSubTask = (id: number) => {
-    setSubTasks(subtasks.filter((c) => c.id != id));
+    setSubTasks(subtasks.filter((c) => c.id !== id));
   };
   const saveTask = () => {
     const task: iCreateTask = {

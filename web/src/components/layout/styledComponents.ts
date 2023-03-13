@@ -25,7 +25,6 @@ export const HeaderLeft = styled.div`
   width: 300px;
   height: 100%;
   display: flex;
-  border-right: 1px solid red;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     width: 260px;
   }
@@ -60,7 +59,12 @@ export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 99vh;
+  height: calc(100vh - 90px);
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
+    height: calc(100vh - 80px);
+  }
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
+    height: calc(100vh - 64px);
 `;
 
 export const ContentWrapper = styled.div<{show:boolean}>`

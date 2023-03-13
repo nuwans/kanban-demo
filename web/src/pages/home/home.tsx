@@ -1,4 +1,3 @@
-import { Button } from "./styledComponents";
 
 const Home = () => {
   return <div>

@@ -1,6 +1,4 @@
-import { useState } from "react";
 import Image from "../../config/images";
-import Modal from "../model";
 import {
   ColumnWrapper,
   Input,

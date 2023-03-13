@@ -11,7 +11,7 @@ import {
 import { Theame } from "../interfaces/theme";
 
 export const lightTheme: Theame = {
-  background: "#ffffff",
+  background: colors.white,
   primaryContent:colors.black,
   secondaryColor: "#000000",
   colors: {
@@ -54,5 +54,6 @@ export const lightTheme: Theame = {
     color:colors.inputBlack
 
   },
-  dropDownBg:colors.white
+  dropDownBg:colors.white,
+  newColumnGradient:'linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)'
 };

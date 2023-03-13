@@ -1,14 +1,12 @@
-import { useState } from "react";
+
 import Image from "../../config/images";
-import Modal from "../model";
 import {
   ColumnWrapper,
   Input,
   InputWrapper,
   RemoveIcon,
 } from "./styledComponent";
-import { iColumn } from "../../interfaces/column";
-import { iCreateTask, iTask } from "../../interfaces/tasks";
+import { iCreateTask } from "../../interfaces/tasks";
 interface Props {
   id: number;
   title: string;

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { DropdownContainer, DropdownHeader, DropdownItem, DropdownList } from './styledComponent';
 import { iColumn } from '../../interfaces/column';
-import { Id } from '@reduxjs/toolkit/dist/tsHelpers';
+
 
 interface Props {
     value: number;

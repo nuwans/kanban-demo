@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "../../config/images";
 import Modal from "../model";
 import {
   ColoumnButton,
@@ -8,13 +7,9 @@ import {
   InputWrapper,
   Label,
   NewButton,
-  Select,
-  SelectOption,
   TextArea,
 } from "./styledComponent";
-import { iColumn } from "../../interfaces/column";
-import ColumnElement from "./subtask";
-import { iAddBoard, iBoard, iCreateBoard } from "../../interfaces/board";
+import {  iBoard } from "../../interfaces/board";
 import { iCreateTask, iTask } from "../../interfaces/tasks";
 import SubTaskElement from "./subtask";
 import CustomDropdown from "./dropDown";
@@ -57,7 +52,7 @@ const EditTaskModal = ({ onClose, isOpen, board, task }: Props) => {
 
       for (let i = 0; i < newArray.length; i++) {
         if (newArray[i].id === id) {
-          const { id, title: oldName, boardId, status = false } = newArray[i];
+          const { id, boardId, status = false } = newArray[i];
           newArray[i] = {
             id,
             title,
@@ -72,7 +67,7 @@ const EditTaskModal = ({ onClose, isOpen, board, task }: Props) => {
     });
   };
   const removeSubTask = (id: number) => {
-    setSubTasks(subtasks.filter((c) => c.id != id));
+    setSubTasks(subtasks.filter((c) => c.id !== id));
   };
   const saveTask = () => {
     const udatedTask: iTask = {

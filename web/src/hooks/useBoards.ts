@@ -8,11 +8,8 @@ import taskService from "../services/taskService";
 
 export const useBoards = () => {
   const dispatch = useDispatch();
-  const {
-    boards = [],
-    board = { id: 0, name: "", columns: [] },
-    task = null,
-  }: Partial<BoardState> = useSelector((state: any) => state.board);
+  const { board = { id: 0, name: "", columns: [] } }: Partial<BoardState> =
+    useSelector((state: any) => state.board);
 
   const getBoards = async () => {
     console.log("geting boards");
@@ -93,7 +90,7 @@ export const useBoards = () => {
     return taskService
       .editColumn(newTask)
       .then((updatedTask: iTask) => {
-       dispatch(setTaskAction({ task: updatedTask }));
+        dispatch(setTaskAction({ task: updatedTask }));
         return boardService.getBoards();
       })
       .then((rs) => {
@@ -110,8 +107,8 @@ export const useBoards = () => {
     return taskService
       .updateTask(newTask)
       .then((updatedTask: iTask) => {
-        console.log(updatedTask)
-      // dispatch(setTaskAction({ task: updatedTask }));
+        console.log(updatedTask);
+        // dispatch(setTaskAction({ task: updatedTask }));
         return boardService.getBoards();
       })
       .then((rs) => {
@@ -133,6 +130,6 @@ export const useBoards = () => {
     editTaskStatus,
     setTask,
     editTaskColumn,
-    updateTask
+    updateTask,
   };
 };
