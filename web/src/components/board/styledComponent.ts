@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const BoardWrapper = styled.div`
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   display: flex;
   overflow: scroll;
   flex-direction: row;
@@ -11,11 +12,14 @@ export const EmptyBoardWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
   background-color: ${(props) => props.theme.boardBg};
   align-items: center;
   justify-content: center;
 `;
 export const AddNewContent = styled.div`
+  padding: 24px;
+  text-align: center;
   font-size: ${(props) => props.theme.typograpy.headingL.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
   font-weight: ${(props) => props.theme.typograpy.headingL.fontWeight};
@@ -24,35 +28,34 @@ export const AddNewContent = styled.div`
 export const AddNewColumnButtonWrapper = styled.div`
   margin-top: 34px;
   height: 48px;
-`;
-export const AddNewColumnButton = styled.button`
-  width: 174px;
-  border-radius: 24px;
-  height: 48px;
-  border: none;
-  color: ${(props) => props.theme.button.primary.color};
-  background: ${(props) => props.theme.button.primary.background};
-  font-size: ${(props) => props.theme.typograpy.headingM.fontSize};
-  line-height: ${(props) => props.theme.typograpy.headingM.lineHeight};
-  font-weight: ${(props) => props.theme.typograpy.headingM.fontWeight};
-  &:hover {
-    color: ${(props) => props.theme.button.primary.hoverColor};
-    background: ${(props) => props.theme.button.primary.hoverBackGround};
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
+    margin-top: 25px;
   }
 `;
+export const AddNewColumn = styled.div`
+  color: ${(props) => props.theme.colors.mediumGray};
+  //background: ${(props) => props.theme.button.primary.background};
+  font-size: ${(props) => props.theme.typograpy.headingXl.fontSize};
+  line-height: ${(props) => props.theme.typograpy.headingXl.lineHeight};
+  font-weight: ${(props) => props.theme.typograpy.headingXl.fontWeight};
+`;
 
-export const Column = styled.div`
+export const Column = styled.div<{ isOver: boolean }>`
   width: 280px;
   margin-left: 24px;
   flex-shrink: 0;
+  margin-bottom: 50px;
+  border: ${(props) =>
+    props.isOver
+      ? "1px dotted" + props.theme.colors.mainPurpole
+      : "1px solid" + props.theme.boardBg};
   display: flex;
   flex-direction: column;
 `;
 export const NewColumn = styled.div`
   width: 280px;
-  margin-left: 24px;
-  margin-top: 64px;
-  margin-right: 24px;
+
+  margin: 64px 24px 50px;
   flex-shrink: 0;
   display: flex;
   align-content: center;
@@ -99,4 +102,20 @@ export const TaskSubHeader = styled.div`
   font-size: ${(props) => props.theme.typograpy.bodyM.fontSize};
   line-height: ${(props) => props.theme.typograpy.bodyM.lineHeight};
   font-weight: ${(props) => props.theme.typograpy.bodyM.fontWeight};
+`;
+
+export const AddNewColumnButton = styled.button`
+  width: 174px;
+  border-radius: 24px;
+  height: 48px;
+  border: none;
+  color: ${(props) => props.theme.button.primary.color};
+  background: ${(props) => props.theme.button.primary.background};
+  font-size: ${(props) => props.theme.typograpy.headingM.fontSize};
+  line-height: ${(props) => props.theme.typograpy.headingM.lineHeight};
+  font-weight: ${(props) => props.theme.typograpy.headingM.fontWeight};
+  &:hover {
+    color: ${(props) => props.theme.button.primary.hoverColor};
+    background: ${(props) => props.theme.button.primary.hoverBackGround};
+  }
 `;

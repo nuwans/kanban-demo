@@ -22,5 +22,8 @@ class TaskService extends ApiService {
   editColumn = (task: Partial<iTask>) => {
     return this.put(`${this.route}/column`, task);
   };
+  deleteTask = (task: iTask) => {
+    return this.delete(`${this.route}/`, {id:task.id});
+  };
 }
 export default new TaskService();

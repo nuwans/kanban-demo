@@ -59,6 +59,10 @@ export const headingL: Typograpy = {
     lightGray:'#F4F7FD',
     veryDarkGray:'#20212C',
     darkGray:'#2B2C37',
-    inputBlack:'#000112'
+    inputBlack:'#000112',
+    red:'#EA5555',
+    hoverRed:'#FF9898',
+    linesDark:'#3E3F4E',
+    linesLight:'#E4EBFA',
 
   }

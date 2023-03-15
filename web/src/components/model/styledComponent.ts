@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,9 @@ export const ModalContainer = styled.div`
 export const ModalWrap = styled.div`
   background-color:${(props) => props.theme.modalBg};
   width: 480px;
-  //height:700px;
-  //overflow:auto;
+  min-height:400px;
+  max-height:650px;
+  //overflow-y:scroll;
   border-radius: 6px;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
     width: 343px;
@@ -35,4 +36,9 @@ export const ContentWrapper = styled.div`
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
     //width: 343px;
   } ;
+`;
+export const Footer = styled.div`
+  display:block;
+  height:10px;
+
 `;

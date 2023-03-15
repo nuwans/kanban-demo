@@ -6,9 +6,10 @@ export interface GlobalState {
   theme: ThemeEnum;
   
 }
-
+const staticTheme = localStorage.getItem("theme") ===ThemeEnum.LIGHT? ThemeEnum.LIGHT:ThemeEnum.DARK;
+console.log(staticTheme,'static theme')
 const initialState: GlobalState = {
-  theme:ThemeEnum.LIGHT
+  theme:staticTheme,
 };
 
 const globalState = createSlice({

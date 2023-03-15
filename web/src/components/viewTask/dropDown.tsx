@@ -26,6 +26,7 @@ const CustomDropdown = ({ options, value, onSelect }:Props) => {
         <span>{options.find((o)=>o.id===value)?.name}</span>
         <span>{isOpen ? '▲' : '▼'}</span>
       </DropdownHeader>
+      <DropdownContainer>
       {isOpen && (
         <DropdownList>
           {options.map((option:iColumn) => (
@@ -35,6 +36,7 @@ const CustomDropdown = ({ options, value, onSelect }:Props) => {
           ))}
         </DropdownList>
       )}
+      </DropdownContainer>
     </DropdownContainer>
   );
 };

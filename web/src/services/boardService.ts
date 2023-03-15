@@ -18,5 +18,8 @@ class BoardService extends ApiService {
   editBoard = (board: iBoard) => {
     return this.put(`${this.route}/`, board);
   };
+  deletBoard = (id: number) => {
+    return this.delete(`${this.route}/`, {id});
+  };
 }
 export default new BoardService();

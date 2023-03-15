@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Header = styled.div`
   color: ${(props) => props.theme.primaryContent};
-  margin-bottom: 24px;
   font-size: ${(props) => props.theme.typograpy.headingL.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
   font-weight: ${(props) => props.theme.typograpy.headingL.fontWeight};
@@ -56,40 +55,6 @@ export const TextArea = styled.textarea`
     opacity: 25%;
   }
 `;
-
-export const Select = styled.select`
-  color: ${(props) => props.theme.modalInput};
-  background: ${(props) => props.theme.modalInputBg};
-  font-family: ${(props) => props.theme.typograpy.headingL.fontFamily};
-  padding: 7px 16px 8px 16px;
-  height: 40px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(130, 143, 163, 0.25);
-  line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
-  border-radius: 4px;
-  font-size: ${(props) => props.theme.typograpy.bodyM.fontSize};
-  &:focus,
-  &:active {
-    outline: none;
-    border-color: rgba(130, 143, 163, 0.25);
-  }
-  ::placeholder {
-    opacity: 25%;
-  }
-`;
-export const SelectOption = styled.option`
-  //color: ${(props) => props.theme.modalInput};
-
-  &:focus,
-  &:active {
-    outline: none;
-    //border-color: rgba(130, 143, 163, 0.25);
-  }
-  ::placeholder {
-    opacity: 25%;
-  }
-`;
-
 export const ColumnWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -118,6 +83,7 @@ export const NewButton = styled.button`
   width: 100%;
   border-radius: 20px;
   height: 40px;
+  margin-top:24px;
   border: none;
   color: ${(props) => props.theme.button.primary.color};
   background: ${(props) => props.theme.button.primary.background};
@@ -132,8 +98,6 @@ export const NewButton = styled.button`
 
 export const DropdownContainer = styled.div`
   position: relative;
-  margin-bottom:24px;
-  display:block;
 `;
 
 export const DropdownHeader = styled.div`

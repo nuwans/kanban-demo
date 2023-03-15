@@ -1,4 +1,10 @@
-import { CloseIcon, ContentWrapper, ModalContainer, ModalWrap } from "./styledComponent";
+import {
+  CloseIcon,
+  ContentWrapper,
+  Footer,
+  ModalContainer,
+  ModalWrap,
+} from "./styledComponent";
 
 interface Props {
   children?: any;
@@ -15,7 +21,9 @@ const Modal = ({ isOpen, onClose, children }: Props) => {
       <ModalWrap>
         <CloseIcon onClick={onClose}>x</CloseIcon>
         <ContentWrapper>{children}</ContentWrapper>
+        <Footer></Footer>
       </ModalWrap>
+      
     </ModalContainer>
   );
 };

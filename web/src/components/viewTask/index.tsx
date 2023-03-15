@@ -6,6 +6,8 @@ import SubTaskElement from "./subtask";
 import CustomDropdown from "./dropDown";
 import OptionDropdown from "./optionDropDown";
 import { useBoards } from "../../hooks/useBoards";
+import { useEffect, useState } from "react";
+import DeletTaskModal from "../deleteTaskModel";
 interface Props {
   onClose: () => void;
   board: iBoard;
@@ -13,7 +15,6 @@ interface Props {
   task: iTask;
   addTask?: (task: iCreateTask) => void;
   editTask: (task: iTask) => void;
-  deleteTask: (task: iTask) => void;
 }
 
 const ViewTaskModal = ({
@@ -22,11 +23,10 @@ const ViewTaskModal = ({
   board,
   task,
   editTask,
-  deleteTask,
 }: Props) => {
-  const { editTaskStatus, editTaskColumn } = useBoards();
-  const { subTasks = [],columnId } = task;
-  //const [columnId] = useState<number>(task.columnId);
+  const { editTaskStatus, editTaskColumn,deleteTask } = useBoards();
+  const { subTasks = [], columnId } = task;
+  const [deleting,setDeleting]=useState<boolean>(false)
   const changeSubTask = (o: Partial<iTask>) => {
     editTaskStatus(o);
   };
@@ -34,6 +34,18 @@ const ViewTaskModal = ({
     editTaskColumn({ id: task.id, columnId });
     onClose();
   };
+  const onDeleteTask = (task: iTask) => {
+    setDeleting(true)
+  };
+  const onDeleteTaskAction = () => {
+    deleteTask(task).then((rs)=>{
+      if(rs.success){
+        setDeleting(false)
+        onClose()
+      }
+    })
+  };
+  
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -43,29 +55,34 @@ const ViewTaskModal = ({
           <OptionDropdown
             task={task}
             editTask={editTask}
-            deleteTask={deleteTask}
+            deleteTask={onDeleteTask}
           ></OptionDropdown>
         </ButtonCorner>
       </Header>
       <Description>{task?.description}</Description>
       <Label>Subtasks</Label>
-      {subTasks.map((st: iCreateTask) => {
-        return (
-          <SubTaskElement
-            id={st.id}
-            title={st.title}
-            status={st.status}
-            key={st.id}
-            onChange={changeSubTask}
-          ></SubTaskElement>
-        );
-      })}
+      {[...subTasks]
+        .sort((a, b) => {
+          return a.id - b.id;
+        })
+        .map((st: iCreateTask) => {
+          return (
+            <SubTaskElement
+              id={st.id}
+              title={st.title}
+              status={st.status}
+              key={st.id}
+              onChange={changeSubTask}
+            ></SubTaskElement>
+          );
+        })}
       <Label>Status</Label>
       <CustomDropdown
         options={board.columns}
         value={columnId}
         onSelect={(id: number) => changeColumn(id)}
       />
+      {deleting && <DeletTaskModal name={task.title} isOpen={deleting} onDelete={onDeleteTaskAction} onClose={()=>{setDeleting(false)}}></DeletTaskModal>}
     </Modal>
   );
 };

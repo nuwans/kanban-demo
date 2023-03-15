@@ -27,6 +27,8 @@ export interface Theame {
     mainPurpole: string;
     white: string;
     mediumGray: string;
+    red:string;
+    hoverRed:string
   };
   button: {
     primary: ButtonProps;
@@ -52,4 +54,5 @@ export interface Theame {
   },
   dropDownBg:string,
   newColumnGradient:string;
+  borderColor:string;
 }

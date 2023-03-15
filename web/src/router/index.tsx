@@ -8,6 +8,7 @@ import { darkTheme } from "../theme/dark";
 import { useSelector } from "react-redux";
 import { GlobalState } from "../store/global";
 const Router = () => {
+ 
   const { theme }: Partial<GlobalState> = useSelector(
     (state: any) => state.global
   );
