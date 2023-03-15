@@ -74,7 +74,7 @@ const Layout = ({ children }: Props) => {
   };
 
   const pickBoard = (id: number) => {
-    let board = boards.find((b) => b.id === id);
+    const board = boards.find((b) => b.id === id);
     if (board) {
       pickAndSetBoard(board);
     }

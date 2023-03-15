@@ -16,7 +16,7 @@ const Router = () => {
     <ThemeProvider theme={theme === ThemeEnum.LIGHT ? lightTheme : darkTheme}>
       <AppRouter>
         <Routes>
-          {routes.map(({ path, component, exact }) => {
+          {routes.map(({ path, component }) => {
             return (
               <Route
                 key={path}

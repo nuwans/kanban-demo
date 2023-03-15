@@ -42,7 +42,7 @@ const MenuModel = ({ isOpen, addNew,onClose }: Props) => {
     task = null,
   }: Partial<BoardState> = useSelector((state: any) => state.board);
   const pickBoard = (id: number) => {
-    let board = boards.find((b) => b.id === id);
+    const board = boards.find((b) => b.id === id);
     if (board) {
       pickAndSetBoard(board);
       onClose()

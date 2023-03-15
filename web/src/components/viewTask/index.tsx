@@ -6,7 +6,7 @@ import SubTaskElement from "./subtask";
 import CustomDropdown from "./dropDown";
 import OptionDropdown from "./optionDropDown";
 import { useBoards } from "../../hooks/useBoards";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import DeletTaskModal from "../deleteTaskModel";
 interface Props {
   onClose: () => void;
@@ -34,7 +34,7 @@ const ViewTaskModal = ({
     editTaskColumn({ id: task.id, columnId });
     onClose();
   };
-  const onDeleteTask = (task: iTask) => {
+  const onDeleteTask = () => {
     setDeleting(true)
   };
   const onDeleteTaskAction = () => {

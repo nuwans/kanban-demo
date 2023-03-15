@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { htmlColors } from "../../config/static";
 import { iBoard } from "../../interfaces/board";
 import { iColumn } from "../../interfaces/column";
 import { iTask } from "../../interfaces/tasks";
@@ -11,14 +10,9 @@ import {
   AddNewColumnButtonWrapper,
   AddNewContent,
   BoardWrapper,
-  ColoumnName,
-  ColoumnNameIcon,
-  Column,
+
   EmptyBoardWrapper,
   NewColumn,
-  TaskCard,
-  TaskName,
-  TaskSubHeader,
 } from "./styledComponent";
 import { DndProvider, } from "react-dnd";
 
@@ -48,7 +42,7 @@ const Board = ({ board, addColumn, openTask }: Props) => {
   return (
     <BoardWrapper>
       <DndProvider backend={HTML5Backend}>
-        {columns.map((c: iColumn, id: number) => {
+        {columns.map((c: iColumn) => {
           return (
             <ColumnElement
               draggingElement={draggingElement}

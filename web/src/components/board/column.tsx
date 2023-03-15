@@ -1,21 +1,11 @@
-import { useState } from "react";
 import { htmlColors } from "../../config/static";
-import { iBoard } from "../../interfaces/board";
 import { iColumn } from "../../interfaces/column";
 import { iTask } from "../../interfaces/tasks";
 import {
-  AddNewColumnButton,
-  AddNewColumnButtonWrapper,
-  AddNewContent,
-  BoardWrapper,
+
   ColoumnName,
   ColoumnNameIcon,
   Column,
-  EmptyBoardWrapper,
-  NewColumn,
-  TaskCard,
-  TaskName,
-  TaskSubHeader,
 } from "./styledComponent";
 import { useDrop } from "react-dnd";
 import TaskElement from "./task";

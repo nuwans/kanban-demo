@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Image from "../../config/images";
 import { iBoard } from "../../interfaces/board";
 import OptionDropdown from "./optionDropDown";
-import { Button, ButtonMobile, ImageWrap } from "./styledComponent";
+import { Button, ButtonMobile } from "./styledComponent";
 import { BoardName, ButtonCorner, HeaderRight } from "./styledComponent";
 import DeletBoardModal from "../deletBoardModal";
 import { useBoards } from "../../hooks/useBoards";
