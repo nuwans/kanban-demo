@@ -3,17 +3,14 @@ import { Suspense } from "react";
 import Layout from '../components/layout'
 
 type PrivateRouterProps = {
-  path: string;
-  element: any;
+
 };
 
-const LayoutRoute: React.FC<PrivateRouterProps> = ({
-  element,
-  path,
-}) => {
+const LayoutRoute: React.FC<PrivateRouterProps> = () => {
   return (
     <Layout>
-      <Suspense fallback={<div  >Loading</div>}>{element}</Suspense>
+      <Suspense fallback={<div  >Loading</div>}>
+      </Suspense>
     </Layout>
   );
 };

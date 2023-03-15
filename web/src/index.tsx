@@ -4,6 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import Router from "./router";
 import { Provider } from "react-redux";
 import store from './store';
+import App from "./App";
 
 
 const root = ReactDOM.createRoot(
@@ -11,9 +12,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-    <Router />
-    </Provider>
+    <App/>
   </React.StrictMode>
 );
 

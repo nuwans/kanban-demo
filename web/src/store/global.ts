@@ -7,7 +7,6 @@ export interface GlobalState {
   
 }
 const staticTheme = localStorage.getItem("theme") ===ThemeEnum.LIGHT? ThemeEnum.LIGHT:ThemeEnum.DARK;
-console.log(staticTheme,'static theme')
 const initialState: GlobalState = {
   theme:staticTheme,
 };

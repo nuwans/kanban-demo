@@ -16,12 +16,12 @@ const Router = () => {
     <ThemeProvider theme={theme === ThemeEnum.LIGHT ? lightTheme : darkTheme}>
       <AppRouter>
         <Routes>
-          {routes.map(({ path, component }) => {
+          {routes.map(({ path }) => {
             return (
               <Route
                 key={path}
                 path={path}
-                element={<LayoutRoute path={path} element={component} />}
+                element={<LayoutRoute />}
               />
             );
           })}

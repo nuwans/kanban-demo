@@ -12,7 +12,6 @@ export const useBoards = () => {
     useSelector((state: any) => state.board);
 
   const getBoards = async () => {
-    console.log("geting boards");
     return boardService
       .getBoards()
       .then((rs) => {
