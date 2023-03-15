@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import {
-  OptionDropDownContainer,
-  OptionDropdownHeader,
-  OptionDropdownItem,
-  OptionDropdownList,
-} from "./styledComponent";
 import Image from "../../config/images";
 import { iTask } from "../../interfaces/tasks";
+import { OptionDropDownContainer, OptionDropdownHeader, OptionDropdownItem } from "../viewTask/styledComponent";
+import { iBoard } from "../../interfaces/board";
+import { OptionDropdownList } from "./styledComponent";
 interface Props {
-  task: iTask;
-  editTask: (task: iTask) => void;
-  deleteTask: (task: iTask) => void;
+  board: iBoard;
+  editBoard: (board: iBoard) => void;
+  deleteBoard: (task: iBoard) => void;
 }
 
-const OptionDropdown = ({ task, editTask, deleteTask }: Props) => {
+const OptionDropdown = ({ board, editBoard, deleteBoard }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -25,31 +22,30 @@ const OptionDropdown = ({ task, editTask, deleteTask }: Props) => {
       <OptionDropdownHeader onClick={toggleDropdown}>
         <Image onClick={toggleDropdown} icon="three-dots"></Image>
       </OptionDropdownHeader>
-      <OptionDropDownContainer>
-      {isOpen && (
+
+      {isOpen && board.id!==0&& (
         <OptionDropdownList>
           <OptionDropdownItem
             key={1}
             onClick={() => {
               toggleDropdown();
-              editTask(task);
+              editBoard(board);
             }}
           >
-            Edit Task
+            Edit Board
           </OptionDropdownItem>
           <OptionDropdownItem
             color="red"
             key={2}
             onClick={() => {
               toggleDropdown();
-              deleteTask(task);
+              deleteBoard(board);
             }}
           >
-            Delete Task
+            Delete Board
           </OptionDropdownItem>
         </OptionDropdownList>
       )}
-      </OptionDropDownContainer>
     </OptionDropDownContainer>
   );
 };

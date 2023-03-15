@@ -3,6 +3,7 @@ import { CreateBoard } from './dto/create-board.dto';
 import { PrismaService } from 'src/shared/service/prisma.service';
 import { EditBoard, EditBoardColumn } from './dto/edit-board.dto';
 import { CreateColumn } from '../coloumns/dto/create-column.dto';
+import { DeleteBoard } from './dto/delete-board.dto';
 
 @Injectable()
 export class BoardService {
@@ -107,5 +108,28 @@ export class BoardService {
     });
 
     return { existing, feilds, rs };
+  }
+
+  async deleteBoard(board:DeleteBoard) {
+    const {id}=board;
+    console.log(board)
+    const rs = await this.prisma.$transaction(async (prisma) => {
+      const deletedTasks = await this.prisma.task.deleteMany({
+        where: {
+          boardId:+id
+        },
+      });
+      const deletedColumns = await this.prisma.column.deleteMany({
+        where: {
+          boardId:+id
+        },
+      });
+      const deletedBoard = await this.prisma.board.delete({
+        where: { id:+id }
+      });
+      return { deletedBoard };
+    });
+    
+    return rs;
   }
 }

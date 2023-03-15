@@ -25,12 +25,23 @@ import AddTaskModal from "../addNewTask";
 import { iCreateTask, iTask } from "../../interfaces/tasks";
 import EditTaskModal from "../editTask";
 import ViewTaskModal from "../viewTask";
+import { GlobalState } from "../../store/global";
+import { ThemeEnum } from "../../interfaces/enums";
+import MenuModel from "../menuModel";
 interface Props {
   children?: any;
 }
 const Layout = ({ children }: Props) => {
-  const { getBoards, addNewBoard, pickAndSetBoard, editBoard, addTask,setTask } =
-    useBoards();
+  const {
+    getBoards,
+    addNewBoard,
+    pickAndSetBoard,
+    editBoard,
+    addTask,
+    setTask,
+  } = useBoards();
+
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showAddBoard, setShowAddBoard] = useState<boolean>(false);
   const [editBoardVisible, setEditBoardVisible] = useState<boolean>(false);
   const [showSideBar, setSideBarVisibility] = useState<boolean>(true);
@@ -45,6 +56,9 @@ const Layout = ({ children }: Props) => {
     board = { id: 0, name: "", columns: [] },
     task = null,
   }: Partial<BoardState> = useSelector((state: any) => state.board);
+  const { theme }: Partial<GlobalState> = useSelector(
+    (state: any) => state.global
+  );
   const toggleSideBar = () => {
     setSideBarVisibility(!showSideBar);
   };
@@ -52,11 +66,15 @@ const Layout = ({ children }: Props) => {
     setShowAddBoard(true);
   };
   const addBoard = (board: iCreateBoard) => {
-    addNewBoard(board);
+    addNewBoard(board).then((r) => {
+      if (r.success) {
+        setShowAddBoard(false);
+      }
+    });
   };
 
   const pickBoard = (id: number) => {
-    let board = boards.find((b) => b.id === id);
+    const board = boards.find((b) => b.id === id);
     if (board) {
       pickAndSetBoard(board);
     }
@@ -65,7 +83,11 @@ const Layout = ({ children }: Props) => {
     setEditBoardVisible(true);
   };
   const editBoardCallBack = (newBoard: iBoard) => {
-    editBoard(newBoard);
+    editBoard(newBoard).then((r) => {
+      if (r.success) {
+        setEditBoardVisible(false);
+      }
+    });
   };
   const createTask = (task: iCreateTask) => {
     addTask(task).then((d) => {
@@ -75,37 +97,66 @@ const Layout = ({ children }: Props) => {
     });
   };
   const editTaskStart = (task: iTask) => {
-    setViewTaskVisibility(false)
+    setViewTaskVisibility(false);
     setEditTaskVisibility(true);
     setTask(task);
   };
   const openTaskView = (task: iTask) => {
-    console.log("opening task", task);
     setViewTaskVisibility(true);
     setTask(task);
   };
-  const deleteTask = (task: iTask) => {
-    console.log(task);
-    //setEditTaskVisibility(true);
-    //setTask(task)
-  };
+
+  const [windowSize, setWindowSize] = useState<{
+    width: number;
+    height: number;
+  }>({ width: window.innerWidth, height: window.innerHeight });
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const { innerWidth, innerHeight } = window;
+      setWindowSize({ width: innerWidth, height: innerHeight });
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   return (
     <RootLayout>
       <Header>
         <HeaderLeft>
           <LogoWrapper>
-            <LogoImage>
+            <LogoImage
+              onClick={() => {
+                if (windowSize.width < 376) {
+                  setShowMenu(!showMenu);
+                }
+              }}
+            >
               <Image icon="logo"></Image>
             </LogoImage>
+            {showMenu && (
+              <MenuModel
+                onClose={() => {
+                  setShowMenu(false);
+                }}
+                isOpen={showMenu}
+                addNew={showAddNewBoard}
+              />
+            )}
+
             <LogoContent>
-              <Image icon="name-light"></Image>
+              <Image
+                icon={theme === ThemeEnum.LIGHT ? "name-light" : "name-dark"}
+              ></Image>
             </LogoContent>
           </LogoWrapper>
         </HeaderLeft>
         <HeaderComp
           setAddTaskModalVisible={() => setAddTaskVisibility(true)}
           board={board}
+          editBoard={addColumn}
         />
       </Header>
       <LayoutWrapper>
@@ -154,7 +205,6 @@ const Layout = ({ children }: Props) => {
               board.columns.length > 0 &&
               task && (
                 <EditTaskModal
-                 
                   onClose={() => setEditTaskVisibility(false)}
                   task={task}
                   isOpen={showEditTask}
@@ -166,9 +216,7 @@ const Layout = ({ children }: Props) => {
               board.columns.length > 0 &&
               task && (
                 <ViewTaskModal
-                 
                   editTask={editTaskStart}
-                  deleteTask={deleteTask}
                   onClose={() => setViewTaskVisibility(false)}
                   task={task}
                   isOpen={viewTaskVisible}

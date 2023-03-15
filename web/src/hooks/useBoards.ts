@@ -30,10 +30,12 @@ export const useBoards = () => {
         return boardService.getBoards();
       })
       .then((rs) => {
-        //todo process validation
         dispatch(setBoards({ boards: rs }));
+        return { success: true };
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        return { success: false, messege: "Creating failed" };
+      });
   };
   const pickAndSetBoard = async (board: iBoard) => {
     dispatch(setBoard({ board }));
@@ -46,10 +48,12 @@ export const useBoards = () => {
         return boardService.getBoards();
       })
       .then((rs) => {
-        //todo process validation
         dispatch(setBoards({ boards: rs }));
+        return { success: true };
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        return { success: false, messege: "editing failed" };
+      });
   };
   const addTask = async (task: iCreateTask) => {
     return taskService
@@ -58,8 +62,9 @@ export const useBoards = () => {
         return boardService.getBoards();
       })
       .then((rs) => {
-        //todo process validation
+        const updatedBoard: iBoard = rs.find((b: any) => b.id === task.boardId);
         dispatch(setBoards({ boards: rs }));
+        dispatch(setBoard({ board: updatedBoard }));
         return { success: true };
       })
       .catch((e) => {
@@ -121,6 +126,38 @@ export const useBoards = () => {
         return { success: false, messege: "Creating failed" };
       });
   };
+  const deletBoard = async (id: number) => {
+    return boardService
+      .deletBoard(id)
+      .then(() => {
+        return boardService.getBoards();
+      })
+      .then((rs) => {
+        dispatch(setBoards({ boards: rs }));
+        const updatedBoard: iBoard = rs[0];
+        dispatch(setBoard({ board: updatedBoard }));
+        return { success: true };
+      })
+      .catch((e) => {
+        return { success: false, messege: "Deleting  failed" };
+      });
+  };
+  const deleteTask = async (task: iTask) => {
+    return taskService
+      .deleteTask(task)
+      .then((rs) => {
+        return boardService.getBoards();
+      })
+      .then((rs) => {
+        const updatedBoard: iBoard = rs.find((b: any) => b.id === task.boardId);
+        dispatch(setBoards({ boards: rs }));
+        dispatch(setBoard({ board: updatedBoard }));
+        return { success: true };
+      })
+      .catch((e) => {
+        return { success: false, messege: "Creating failed" };
+      });
+  };
   return {
     getBoards,
     addNewBoard,
@@ -131,5 +168,7 @@ export const useBoards = () => {
     setTask,
     editTaskColumn,
     updateTask,
+    deletBoard,
+    deleteTask
   };
 };

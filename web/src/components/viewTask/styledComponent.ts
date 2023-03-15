@@ -28,7 +28,6 @@ export const Description = styled.div`
   margin-top: 24px;
 `;
 
-
 export const TextArea = styled.textarea`
   color: ${(props) => props.theme.modalInput};
   background: ${(props) => props.theme.modalInputBg};
@@ -94,8 +93,7 @@ export const NewButton = styled.button`
 
 export const DropdownContainer = styled.div`
   position: relative;
-  margin-bottom: 24px;
-  display: block;
+  margin-bottom:24px;
 `;
 
 export const DropdownHeader = styled.div<{ isOpen: boolean }>`
@@ -120,11 +118,12 @@ export const DropdownHeader = styled.div<{ isOpen: boolean }>`
 export const DropdownList = styled.ul`
   position: absolute;
   top: calc(100% + 5px);
+  //disply:none;
   left: 0;
   z-index: 10;
   width: 100%;
   height: auto;
-  max-height: 150px;
+  max-height: 120px;
   color: ${(props) => props.theme.colors.mediumGray};
   overflow-y: scroll;
   background: ${(props) => props.theme.dropDownBg};
@@ -147,7 +146,6 @@ export const DropdownItem = styled.li`
 `;
 
 export const TaskWrapper = styled.div<{ status: boolean }>`
-  //width: calc(100% - 32px);
   align-items: center;
   color: ${(props) => props.theme.task.color};
   padding: 13px 12px;
@@ -155,11 +153,11 @@ export const TaskWrapper = styled.div<{ status: boolean }>`
   font-size: ${(props) => props.theme.typograpy.bodyM.fontSize};
   line-height: ${(props) => props.theme.typograpy.bodyM.lineHeight};
   font-weight: ${(props) => props.theme.typograpy.bodyM.fontWeight};
- 
 `;
 
 export const TaskName = styled.div<{ status: boolean }>`
   opacity: ${(props) => (props.status ? "25%" : "100%")};
+  text-decoration-line: ${(props) => (props.status ? "line-through" : "none")};
 `;
 
 export const CheckboxLabel = styled.label`
@@ -217,7 +215,6 @@ export const CustomCheckbox = styled.div`
 `;
 export const OptionDropDownContainer = styled.div`
   position: relative;
-  display: block;
 `;
 
 export const OptionDropdownHeader = styled.div`
@@ -231,7 +228,6 @@ export const OptionDropdownList = styled.ul`
   max-height: 100px;
   top: 30px;
   left: -55px;
-  overflow-y: scroll;
   background: ${(props) => props.theme.modalInputBg};
   border-radius: 5px;
   padding: 0;

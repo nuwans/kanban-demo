@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const RootLayout = styled.div`
   font-family: Plus Jakarta Sans;
+  overflow: scrol;
   font-style: normal;
   font-weight: 500;
   background: ${(props) => props.theme.background};
@@ -9,11 +10,12 @@ export const RootLayout = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 100vh;
 `;
 export const Header = styled.div`
   width: 100%;
   height: 90px;
-  display:flex;
+  display: flex;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     height: 80px;
   }
@@ -24,6 +26,7 @@ export const Header = styled.div`
 export const HeaderLeft = styled.div`
   width: 300px;
   height: 100%;
+  border-right: 1px solid ${(props) => props.theme.borderColor};
   display: flex;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     width: 260px;
@@ -57,59 +60,53 @@ export const LogoContent = styled.div`
 
 export const LayoutWrapper = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
+  background: ${(props) => props.theme.background};
   width: 100%;
-  height: calc(100vh - 90px);
+  height: auto;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
-    height: calc(100vh - 80px);
+    height: calc(100% - 80px);
   }
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
-    height: calc(100vh - 64px);
+    height: calc(100% - 64px);
+  }
 `;
 
-export const ContentWrapper = styled.div<{show:boolean}>`
+export const ContentWrapper = styled.div<{ show: boolean }>`
   background: ${(props) => props.theme.background};
+  border-top: 1px solid ${(props) => props.theme.borderColor};
   color: ${(props) => props.theme.secondaryColor};
-  margin: 0px auto;
-  height:100%;
-  width: ${(props) => (props.show ?'calc(100% - 300px)': '100%')};
+  width: ${(props) => (props.show ? "calc(100% - 300px)" : "100%")};
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
-    width: ${(props) => (props.show ?'calc(100% - 260px)': '100%')};
+    width: ${(props) => (props.show ? "calc(100% - 260px)" : "100%")};
   }
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
     width: 100%;
   }
 `;
-export const ContentHeader = styled.div`
-  //background: red;
-  border: 1px solid blue;
-  height: 96px;
-  color: ${(props) => props.theme.secondaryColor};
-`;
+
 export const Content = styled.div`
-height:calc(100% - 90px);
-background: ${(props) => props.theme.background};
+  height: 100%;
+  background: ${(props) => props.theme.background};
   color: ${(props) => props.theme.secondaryColor};
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
-    height:calc(100% - 80px);
+    height: calc(100%);
   }
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
-    height:calc(100% - 64px);
+    height: calc(100%);
   } ;
 `;
 
-
 export const VisibleIconWrapper = styled.div`
   background: ${(props) => props.theme.colors.mainPurpole};
-  position:fixed;
-  bottom:100px;
-  left:10px;
-  width:56px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position: fixed;
+  bottom: 100px;
+  left: 10px;
+  width: 56px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0 100px 100px 0;
 `;
-
-

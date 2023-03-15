@@ -98,10 +98,12 @@ export const NewButton = styled.button`
   }
 `;
 
+export const DropdownWrapper = styled.div`
+  
+`;
 export const DropdownContainer = styled.div`
   position: relative;
   margin-bottom:24px;
-  display:block;
 `;
 
 export const DropdownHeader = styled.div<{ isOpen: boolean }>`
@@ -130,7 +132,7 @@ export const DropdownList = styled.ul`
   z-index: 10;
   width: 100%;
   height: auto;
-  max-height: 150px;
+  max-height: 120px;
   color: ${(props) => props.theme.colors.mediumGray};
   overflow-y: scroll;
   background: ${(props) => props.theme.dropDownBg};

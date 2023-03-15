@@ -125,7 +125,7 @@ const AddTaskModal = ({ onClose, isOpen, addTask, board }: Props) => {
           saveTask();
         }}
       >
-        Create New Board
+        Create New Task
       </NewButton>
     </Modal>
   );

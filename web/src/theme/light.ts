@@ -17,7 +17,9 @@ export const lightTheme: Theame = {
   colors: {
     mainPurpole: colors.mainPurpole,
     white: colors.white,
-    mediumGray:colors.mediumGray
+    mediumGray:colors.mediumGray,
+    red:colors.red,
+    hoverRed:colors.hoverRed
   },
   button:{
     primary:{
@@ -55,5 +57,6 @@ export const lightTheme: Theame = {
 
   },
   dropDownBg:colors.white,
-  newColumnGradient:'linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)'
+  newColumnGradient:'linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)',
+  borderColor:colors.linesLight
 };

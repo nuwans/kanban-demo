@@ -1,21 +1,20 @@
-import { htmlColors } from "../../config/static";
+import { useState } from "react";
 import { iBoard } from "../../interfaces/board";
 import { iColumn } from "../../interfaces/column";
 import { iTask } from "../../interfaces/tasks";
+import ColumnElement from "./column";
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import {
+  AddNewColumn,
   AddNewColumnButton,
   AddNewColumnButtonWrapper,
   AddNewContent,
   BoardWrapper,
-  ColoumnName,
-  ColoumnNameIcon,
-  Column,
+
   EmptyBoardWrapper,
   NewColumn,
-  TaskCard,
-  TaskName,
-  TaskSubHeader,
 } from "./styledComponent";
+import { DndProvider, } from "react-dnd";
 
 interface Props {
   board: iBoard;
@@ -24,11 +23,12 @@ interface Props {
 }
 const Board = ({ board, addColumn, openTask }: Props) => {
   const { columns = [] } = board;
+  const [draggingElement, setDraggingElement] = useState<iTask>();
   if (columns.length === 0) {
     return (
       <EmptyBoardWrapper>
         <AddNewContent>
-          This board is emptys. Create a new column to get started.
+          This board is empty. Create a new column to get started.
         </AddNewContent>
         <AddNewColumnButtonWrapper>
           <AddNewColumnButton onClick={addColumn}>
@@ -41,34 +41,23 @@ const Board = ({ board, addColumn, openTask }: Props) => {
 
   return (
     <BoardWrapper>
-      {columns.map((c: iColumn, id: number) => {
-        return (
-          <Column key={c.id}>
-            <ColoumnName>
-              <ColoumnNameIcon color={htmlColors[id % 10]}></ColoumnNameIcon>
-              {c.name}
-            </ColoumnName>
-            {c.tasks
-              ?.filter((task) => task.parentId === null)
-              .map((task: iTask) => {
-                return (
-                  <TaskCard onClick={() => openTask(task)} key={task.id}>
-                    <TaskName>{task.title}</TaskName>
-                    <TaskSubHeader>
-                      {task.subTasks?.filter((st) => !st.status).length} of{" "}
-                      {task.subTasks?.filter((st) => !st.status).length}{" "}
-                      subtasks
-                    </TaskSubHeader>
-                  </TaskCard>
-                );
-              })}
-          </Column>
-        );
-      })}
+      <DndProvider backend={HTML5Backend}>
+        {columns.map((c: iColumn) => {
+          return (
+            <ColumnElement
+              draggingElement={draggingElement}
+              setDraggingElement={setDraggingElement}
+              key={c.id}
+              column={c}
+              openTask={openTask}
+            />
+          );
+        })}
+      </DndProvider>
       <NewColumn>
-        <AddNewColumnButton onClick={addColumn}>
-          + Add New Column
-        </AddNewColumnButton>
+        <AddNewColumn onClick={addColumn}>
+          + New Column
+        </AddNewColumn>
       </NewColumn>
     </BoardWrapper>
   );

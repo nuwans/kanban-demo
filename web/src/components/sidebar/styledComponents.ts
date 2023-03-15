@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div<{show:boolean}>`
-  padding-top: 32px;
+  max-height:100%;
+  padding-top: 15px;
+  border-right:1px solid ${(props)=>props.theme.borderColor};
   width: ${(props) => (props.show ?'300px': '0px')};
   display: ${({ show }) => show ? 'flex' : 'none'};
   flex-direction:column;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
-    //width: 260px;
     width: ${(props) => (props.show ?'260px': '0px')};
   }
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
@@ -15,11 +16,13 @@ export const Wrapper = styled.div<{show:boolean}>`
 `;
 
 export const BoardWrapper = styled.div`
-  margin-top: 54px;
+  max-height:80%;
+  overflow:scrol;
+  flex:1;
 `;
 export const BoardHeader = styled.div`
   margin: 0;
-  padding-left: 24px;
+  padding-left: 32px;
   text-transform: uppercase;
   margin-bottom:19px;
   color: ${(props) => props.theme.colors.mediumGray};
@@ -44,7 +47,7 @@ export const ItemWrapper = styled.div<{selected:boolean}>`
   }
 `;
 export const IconWrapper = styled.div`
-  margin: 4px 16px 0 24px;
+  margin: 4px 16px 0 32px;
 `;
 export const Name = styled.div`
   display: block;
@@ -61,7 +64,7 @@ export const SwitchWrapper = styled.div`
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     width: 235px;
   }
-  margin: auto auto 10px auto;
+  margin: auto auto 0px auto;
   display: flex;
   align-items: center;
   text-align: center;
@@ -76,7 +79,6 @@ export const ToggleWrapper = styled.div`
 `;
 export const ToggleContent = styled.div`
   margin-left: 15px;
-
   color: ${(props) => props.theme.colors.mediumGray};
   font-size: ${(props) => props.theme.typograpy.headingM.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingM.lineHeight};

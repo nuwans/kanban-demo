@@ -41,7 +41,7 @@ const AddBoardModal = ({ onClose, isOpen, addBoard }: Props) => {
   };
   const saveBoard = () => {
     const newArr = columns.map((obj) => {
-      let { id, ...rest } = obj;
+      const { id, ...rest } = obj;
       return rest;
     });
     addBoard({ name, columns: newArr });

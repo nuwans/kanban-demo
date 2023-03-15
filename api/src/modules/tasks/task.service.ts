@@ -4,6 +4,7 @@ import { PrismaService } from 'src/shared/service/prisma.service';
 import { EditTaskStatus } from './dto/edit-task-status.dto';
 import { EditTaskColumn } from './dto/edit-task-column.dto';
 import { UpdateTask } from './dto/update-task.dto';
+import { DeleteTask } from './dto/delete-task.dto';
 
 @Injectable()
 export class TaskService {
@@ -76,7 +77,6 @@ export class TaskService {
   async updateTask(task: UpdateTask) {
     const { title, boardId, columnId, description, subTasks, id, parentId } =
       task;
-    console.log(task, 'ssss');
     const existing: UpdateTask = await this.prisma.task.findFirst({
       where: {
         id: id,
@@ -130,7 +130,6 @@ export class TaskService {
         status,
       };
     });
-    console.log(feilds);
     const rs = await this.prisma.$transaction(async (prisma) => {
       const updatedRoot = await this.prisma.task.update({
         where: {
@@ -157,6 +156,24 @@ export class TaskService {
       });
 
       return { newOne };
+    });
+
+    return { ...rs };
+  }
+  async deleteTask(task: DeleteTask) {
+    const { id } = task;
+    console.log(task,'wddwdwdddedeed')
+    const rs = await this.prisma.$transaction(async (prisma) => {
+      const deleteSubTasks = await this.prisma.task.deleteMany({
+        where: {
+          parentId: +id,
+        },
+      });
+      const deletedTask = await prisma.task.delete({
+        where: { id: +id },
+      });
+
+      return { deleteSubTasks, deletedTask };
     });
 
     return { ...rs };
