@@ -123,7 +123,7 @@ const Layout = ({ children }: Props) => {
   }, []);
 
   return (
-    <RootLayout>
+    <RootLayout data-test-id="root-layout">
       <Header>
         <HeaderLeft>
           <LogoWrapper>
