@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-  color: ${(props) => props.theme.primaryContent};
+  color: ${(props) => props.theme.modalInput};
   font-size: ${(props) => props.theme.typograpy.headingL.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
   font-weight: ${(props) => props.theme.typograpy.headingL.fontWeight};
@@ -100,7 +100,7 @@ export const DropdownContainer = styled.div`
   position: relative;
 `;
 
-export const DropdownHeader = styled.div`
+export const DropdownHeader = styled.div<{ isOpen: boolean }>`
   width: calc(100% - 32px);
   padding: 0px 16px 0px 16px;
   display: flex;
@@ -111,7 +111,10 @@ export const DropdownHeader = styled.div`
   font-family: ${(props) => props.theme.typograpy.headingL.fontFamily};
   width: calc(100% - 30px);
   padding: 7px 16px 8px 16px;
-  border: 1px solid rgba(130, 143, 163, 0.25);
+  border: ${(props) =>
+    props.isOpen
+      ? "1px solid " + props.theme.colors.mainPurpole
+      : "1px solid rgba(130, 143, 163, 0.25)"};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
   border-radius: 4px;
   font-size: ${(props) => props.theme.typograpy.bodyM.fontSize};

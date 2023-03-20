@@ -15,11 +15,10 @@ export const useBoards = () => {
     return boardService
       .getBoards()
       .then((rs) => {
-        console.log(rs);
+    
         //todo process validation
         dispatch(setBoards({ boards: rs }));
       })
-      .catch((e) => console.log(e));
   };
 
   const addNewBoard = async (board: iCreateBoard) => {
@@ -47,7 +46,9 @@ export const useBoards = () => {
         return boardService.getBoards();
       })
       .then((rs) => {
+        const updatedBoard: iBoard = rs.find((b: any) => b.id === board.id);
         dispatch(setBoards({ boards: rs }));
+        dispatch(setBoard({ board: updatedBoard }));
         return { success: true };
       })
       .catch((e) => {
@@ -111,7 +112,6 @@ export const useBoards = () => {
     return taskService
       .updateTask(newTask)
       .then((updatedTask: iTask) => {
-        console.log(updatedTask);
         // dispatch(setTaskAction({ task: updatedTask }));
         return boardService.getBoards();
       })

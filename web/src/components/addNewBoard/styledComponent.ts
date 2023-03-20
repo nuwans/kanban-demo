@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-  color: ${(props) => props.theme.primaryContent};
+  color: ${(props) => props.theme.modalInput};
   margin-bottom: 24px;
   font-size: ${(props) => props.theme.typograpy.headingL.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};

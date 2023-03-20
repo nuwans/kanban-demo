@@ -5,19 +5,26 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+export const ModalScroll = styled.div`
+  max-height: 700px;
+  overflow-y:scroll;
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
+    width: 360px;
+  } ;
+`;
+
 export const ModalWrap = styled.div`
-  background-color:${(props) => props.theme.modalBg};
+  background-color: ${(props) => props.theme.modalBg};
   width: 480px;
-  min-height:400px;
-  max-height:650px;
-  //overflow-y:scroll;
+  margin:auto;
+  //min-height: 250px;
   border-radius: 6px;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
     width: 343px;
@@ -31,14 +38,13 @@ export const CloseIcon = styled.div`
 `;
 export const ContentWrapper = styled.div`
   margin: 10px 32px 32px;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
     //width: 343px;
   } ;
 `;
 export const Footer = styled.div`
-  display:block;
-  height:10px;
-
+  display: block;
+  height: 10px;
 `;

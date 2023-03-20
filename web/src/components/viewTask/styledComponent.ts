@@ -4,7 +4,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${(props) => props.theme.primaryContent};
+  color: ${(props) => props.theme.modalInput};
   margin-bottom: 24px;
   font-size: ${(props) => props.theme.typograpy.headingL.fontSize};
   line-height: ${(props) => props.theme.typograpy.headingL.lineHeight};
@@ -20,7 +20,7 @@ export const Label = styled.div`
   margin-top: 24px;
 `;
 export const Description = styled.div`
-  color: ${(props) => props.theme.modalLabel};
+  color: ${(props) => props.theme.colors.mediumGray};
   font-size: ${(props) => props.theme.typograpy.bodyL.fontSize};
   font-weight: ${(props) => props.theme.typograpy.bodyL.fontWeight};
   line-height: ${(props) => props.theme.typograpy.bodyL.lineHeight};
@@ -93,7 +93,7 @@ export const NewButton = styled.button`
 
 export const DropdownContainer = styled.div`
   position: relative;
-  margin-bottom:24px;
+  margin-bottom: 24px;
 `;
 
 export const DropdownHeader = styled.div<{ isOpen: boolean }>`
@@ -220,14 +220,16 @@ export const OptionDropDownContainer = styled.div`
 export const OptionDropdownHeader = styled.div`
   display: flex;
 `;
-export const OptionDropdownList = styled.ul`
-  position: absolute;
+export const OptionDropdownList = styled.ul<{
+  x: number;
+  y: number;
+}>`
+  position: fixed;
   z-index: 10;
   width: 192px;
   height: auto;
   max-height: 100px;
-  top: 30px;
-  left: -55px;
+  left: ${(props) => (props.x-100)+'px'};
   background: ${(props) => props.theme.modalInputBg};
   border-radius: 5px;
   padding: 0;
@@ -237,6 +239,10 @@ export const OptionDropdownList = styled.ul`
   margin: 0;
   list-style: none;
   margin-bottom: 24px;
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
+    
+    left: ${(props) => (props.x-150)+'px'};
+  } ;
 `;
 
 export const OptionDropdownItem = styled.li<{ color?: string }>`

@@ -27,7 +27,7 @@ const CustomDropdown = ({ options, value, onSelect }: Props) => {
 
   return (
     <DropdownContainer>
-      <DropdownHeader onClick={toggleDropdown}>
+      <DropdownHeader isOpen={isOpen}  onClick={toggleDropdown}>
         <span>{options.find((o) => o.id === value)?.name}</span>
         <span>{isOpen ? "▲" : "▼"}</span>
       </DropdownHeader>
