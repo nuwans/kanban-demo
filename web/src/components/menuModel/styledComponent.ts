@@ -28,9 +28,6 @@ export const ContentWrapper = styled.div`
   margin: 16px 0 0 0;
   display:flex;
   flex-direction:column;
-  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
-    //width: 343px;
-  } ;
 `;
 export const Footer = styled.div`
   display:block;

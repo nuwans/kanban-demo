@@ -115,6 +115,7 @@ const Layout = ({ children }: Props) => {
     const handleWindowResize = () => {
       const { innerWidth, innerHeight } = window;
       setWindowSize({ width: innerWidth, height: innerHeight });
+      if(innerHeight>480){setShowMenu(false)}
     };
     window.addEventListener("resize", handleWindowResize);
     return () => {
@@ -129,7 +130,7 @@ const Layout = ({ children }: Props) => {
           <LogoWrapper>
             <LogoImage
               onClick={() => {
-                if (windowSize.width < 376) {
+                if (windowSize.width < 480) {
                   setShowMenu(!showMenu);
                 }
               }}

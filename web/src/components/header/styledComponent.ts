@@ -56,7 +56,8 @@ export const Button = styled.button<{ disabled: boolean }>`
     color: ${(props) => props.theme.button.primary.hoverColor};
     background: ${(props) => props.theme.button.primary.hoverBackGround};
   }
-  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
+
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
    display:none;
   }
 `;
@@ -78,7 +79,7 @@ export const ButtonMobile = styled.button<{ disabled: boolean }>`
     color: ${(props) => props.theme.button.primary.hoverColor};
     background: ${(props) => props.theme.button.primary.hoverBackGround};
   }
-  @media screen and (max-width: ${(props) => props.theme.breackPoints.mobile}) {
+  @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     display:block;
    }
 `;

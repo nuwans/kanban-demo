@@ -63,7 +63,8 @@ export const LayoutWrapper = styled.div`
   flex: 1;
   flex-direction: row;
   background: ${(props) => props.theme.background};
-  width: 100%;
+  //max-width: 100%;
+  //overflow:scroll;
   height: auto;
   @media screen and (max-width: ${(props) => props.theme.breackPoints.tab}) {
     height: calc(100% - 80px);
@@ -75,6 +76,7 @@ export const LayoutWrapper = styled.div`
 
 export const ContentWrapper = styled.div<{ show: boolean }>`
   background: ${(props) => props.theme.background};
+
   border-top: 1px solid ${(props) => props.theme.borderColor};
   color: ${(props) => props.theme.secondaryColor};
   width: ${(props) => (props.show ? "calc(100% - 300px)" : "100%")};
