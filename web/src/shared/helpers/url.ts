@@ -9,6 +9,5 @@ export const serialize = (params: any): string => {
    .filter((key)=> params[key])
     .map((key) => key + '=' + params[key])
     .join('&');
-  //console.log(queryString);
   return queryString;
 };

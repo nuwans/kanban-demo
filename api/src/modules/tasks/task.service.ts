@@ -18,9 +18,7 @@ export class TaskService {
       },
     });
     const newSubTasks: any[] = subTasks.map((st: CreateTask) => {
-      console.log(st);
       const { id, ...rest } = st;
-      console.log(rest);
       return {
         ...rest,
       };
@@ -162,7 +160,6 @@ export class TaskService {
   }
   async deleteTask(task: DeleteTask) {
     const { id } = task;
-    console.log(task,'wddwdwdddedeed')
     const rs = await this.prisma.$transaction(async (prisma) => {
       const deleteSubTasks = await this.prisma.task.deleteMany({
         where: {

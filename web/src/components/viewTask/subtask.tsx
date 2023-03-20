@@ -18,7 +18,6 @@ interface Props {
 
 const SubTaskElement = ({ id, onChange, title, status }: Props) => {
   const handleCheckboxChange = (event: any) => {
-    console.log(event.target.checked,status)
     onChange({id,status:event.target.checked})
   };
   return (

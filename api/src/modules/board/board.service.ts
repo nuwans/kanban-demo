@@ -10,7 +10,6 @@ export class BoardService {
   constructor(private prisma: PrismaService) {}
   async addBoard(board: CreateBoard) {
     const { name, columns = [] } = board;
-    console.log(board);
     const b = await this.prisma.board.create({
       data: {
         name,
@@ -112,7 +111,6 @@ export class BoardService {
 
   async deleteBoard(board:DeleteBoard) {
     const {id}=board;
-    console.log(board)
     const rs = await this.prisma.$transaction(async (prisma) => {
       const deletedTasks = await this.prisma.task.deleteMany({
         where: {

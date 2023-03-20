@@ -46,7 +46,6 @@ const EditTaskModal = ({ onClose, isOpen, board, task }: Props) => {
   };
   const changeSubTask = (o: Partial<iCreateTask>) => {
     const { id, title = "" } = o;
-    console.log(subtasks);
     setSubTasks((prevArray) => {
       const newArray = [...prevArray];
 
@@ -82,8 +81,6 @@ const EditTaskModal = ({ onClose, isOpen, board, task }: Props) => {
     updateTask(udatedTask).then((rs) => {
       if (rs.success) {
         onClose();
-      } else {
-        console.log("error");
       }
     });
   };

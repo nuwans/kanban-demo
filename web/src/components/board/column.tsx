@@ -21,7 +21,6 @@ const ColumnElement = ({ column, openTask, draggingElement }: Props) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: (task: iTask) => {
-      console.log(task, column.id);
       editTaskColumn({ id: task.id, columnId: column.id });
     },
     collect: (monitor) => ({

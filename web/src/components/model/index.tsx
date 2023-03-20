@@ -3,6 +3,7 @@ import {
   ContentWrapper,
   Footer,
   ModalContainer,
+  ModalScroll,
   ModalWrap,
 } from "./styledComponent";
 
@@ -18,12 +19,14 @@ const Modal = ({ isOpen, onClose, children }: Props) => {
 
   return (
     <ModalContainer>
-      <ModalWrap>
-        <CloseIcon onClick={onClose}>x</CloseIcon>
-        <ContentWrapper>{children}</ContentWrapper>
-        <Footer></Footer>
-      </ModalWrap>
+      <ModalScroll>
       
+        <ModalWrap>
+          <CloseIcon onClick={onClose}>x</CloseIcon>
+          <ContentWrapper>{children}</ContentWrapper>
+          <Footer></Footer>
+        </ModalWrap>
+      </ModalScroll>
     </ModalContainer>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { names } from "./config/static";
 import { Provider } from "react-redux";
 import Router from "./router";
 import store from "./store";

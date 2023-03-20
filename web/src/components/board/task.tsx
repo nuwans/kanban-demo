@@ -17,10 +17,6 @@ const TaskElement = ({ task,openTask }: Props) => {
       item: task,
       end(item, monitor) {
         const dropResult = monitor.getDropResult()
-        console.log(monitor)
-        if (item && dropResult) {
-          console.log(item,dropResult)
-        }
       },
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.4 : 1,
